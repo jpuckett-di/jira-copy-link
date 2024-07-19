@@ -1,7 +1,8 @@
 // ==UserScript==
 // @name        JIRA Copy Title Links
 // @namespace   Violentmonkey Scripts
-// @match       https://carscommerce.atlassian.net/*
+// @match       https://carscommerce.atlassian.net/browse/*
+// @match       https://carscommerce.atlassian.net/jira/software/c/projects/*
 // @grant       none
 // @version     1.0
 // @author      -
