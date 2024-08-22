@@ -45,6 +45,12 @@ function findUrl() {
   ).href;
 }
 
+function findIssueKey() {
+  return document.querySelector(
+    'a[data-testid="issue.views.issue-base.foundation.breadcrumbs.current-issue.item"] span'
+  ).innerText;
+}
+
 function createButton(listener) {
   const button = document.createElement("button");
   button.id = BUTTON_ID;
@@ -55,5 +61,5 @@ function createButton(listener) {
 }
 
 createButton(() => {
-  setClipboard(makeLink(findTitle(), findUrl()));
+  setClipboard(makeLink(findIssueKey() + " " + findTitle(), findUrl()));
 });
