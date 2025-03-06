@@ -4,9 +4,11 @@
 // @match       https://carscommerce.atlassian.net/browse/*
 // @match       https://carscommerce.atlassian.net/jira/software/c/projects/*
 // @grant       none
-// @version     1.0
-// @author      -
-// @description 7/19/2024, 2:08:47 PM
+// @version     1.0.1
+// @author      Jeff Puckett
+// @description Adds a button that copies the current JIRA issue title and link to the clipboard
+// @homepageURL https://github.com/jpuckett-di/jira-copy-link
+// @downloadURL https://raw.githubusercontent.com/jpuckett-di/jira-copy-link/refs/heads/main/main.user.js
 // ==/UserScript==
 const BUTTON_ID = "jira-copy-button";
 
