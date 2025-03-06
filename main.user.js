@@ -12,12 +12,20 @@
 // ==/UserScript==
 const BUTTON_ID = "jira-copy-button";
 
-async function setClipboard(text) {
-  const type = "text/html";
-  const blob = new Blob([text], { type });
-  const data = [new ClipboardItem({ [type]: blob })];
-  await navigator.clipboard.write(data);
-  animateButton();
+async function setClipboard(text, htmlText) {
+  try {
+    // Create clipboard data with both text and HTML formats
+    const clipboardItems = [
+      new ClipboardItem({
+        'text/plain': new Blob([text], { type: 'text/plain' }),
+        'text/html': new Blob([htmlText], { type: 'text/html' })
+      })
+    ];
+    await navigator.clipboard.write(clipboardItems);
+    animateButton();
+  } catch (err) {
+    console.error('Failed to copy:', err);
+  }
 }
 
 function animateButton() {
@@ -63,5 +71,12 @@ function createButton(listener) {
 }
 
 createButton(() => {
-  setClipboard(makeLink(findIssueKey() + " " + findTitle(), findUrl()));
+  const issueKey = findIssueKey();
+  const title = findTitle();
+  const url = findUrl();
+
+  const plainText = `${issueKey} ${title}\n${url}`;
+  const htmlText = makeLink(`${issueKey} ${title}`, url);
+
+  setClipboard(plainText, htmlText);
 });
