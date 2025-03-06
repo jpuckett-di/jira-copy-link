@@ -4,7 +4,7 @@
 // @match       https://carscommerce.atlassian.net/browse/*
 // @match       https://carscommerce.atlassian.net/jira/software/c/projects/*
 // @grant       none
-// @version     1.0.2
+// @version     1.0.3
 // @author      Jeff Puckett
 // @description Adds a button that copies the current JIRA issue title and link to the clipboard
 // @homepageURL https://github.com/jpuckett-di/jira-copy-link
@@ -46,7 +46,7 @@ function makeLink(text, url) {
 function findTitle() {
   return document.querySelector(
     'h1[data-testid="issue.views.issue-base.foundation.summary.heading"]'
-  ).textContent;
+  ).textContent.trim();
 }
 
 function findUrl() {
